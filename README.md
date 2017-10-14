@@ -1,5 +1,5 @@
 # SATA-PERFORMANCE-UTILITY
-This is an Utility measures the performance of SATA Drives. It can test both HDD and SSD.
+This is an Utility to measure the performance of SATA Drives. It can test both HDD and SSD.
 
 This Utility measures the following parameters:
 1. IOPS: Input/output operations per second
@@ -18,7 +18,7 @@ This Utility considers the following Test Parameters:
 6. IOs Alignment and UN-alignment
 7. The entropy of the data written.
 
-    1. Random and Sequential IOs: The utility can issue both Random IOs and 100 % Sequential IOs. The Random IO means LBAs of neighbouring operations would not be related in any ways. To generate Random LBAs I am using  Rand() function available in Linux OSes. Rand() function are suitable for repeatability of the test and compare the performance of two drives. The Sequential IO means LBA of next IO will be “present LBA + block_size.” For submitting Random IOs, the utility uses the IOCTL call. IOCTL call is a synchronous call i.e. it returns only when the IO is complete. For submitting sequential IOs, the utility uses the combination of WRITE and READ calls. WRITE call is used to submit the IO command and READ call to poll its completion. It (the use of WRITE and READ calls) was necessary for sequential IOs as that needs synchronisation of parallel threads.
+    1. Random and Sequential IOs: The utility can issue both Random IOs and 100 % Sequential IOs. The Random IO means LBAs of neighbouring operations would not be related in any ways. To generate Random LBAs I am using  Rand() function available in Linux OSes. The Rand() function are suitable for repeatability of the test and compare the performance of two drives. The Sequential IO means LBA of next IO will be “present LBA + block_size.” For submitting Random IOs, the utility uses the IOCTL call. IOCTL call is a synchronous call i.e. it returns only when the IO is complete. For submitting sequential IOs, the utility uses the combination of WRITE and READ calls. WRITE call is used to submit the IO command and READ call to poll its completion. It (the use of WRITE and READ calls) was necessary for sequential IOs as that needs synchronisation of parallel threads.
     
     2. variable Block Size: Block size means the number of sectors (LBA) to be considered around the passed LBA for data transfer.
    
